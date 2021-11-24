@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title1 %}Prediction{% endblock title1 %}
+{% block title2 %}Prediction{% endblock title2 %}
+{% block title3 %}Prediction{% endblock title3 %}
+
+{% block body %}
+<h2 style="text-align: center;"><u>LSTM - RNN</u></h2>
+<div class="col-lg-7 mx-auto" style="top: 20px; left: 130px;">
+            <form id="contact-form" class="form" method="POST">
+                {% csrf_token %}
+                        Crypto :
+                        <select name="coin" class="form-select form-select-lg mb-15" aria-label=".form-select-lg example" style="padding-right: 200px; padding-top: 7px; padding-bottom: 7px;">
+                            <option selected>Open this and select one Crypto-coin</option>
+                            <option value="BTC-INR">Bitcoin</option>
+                            <option value="ETH-INR">Ethereum </option>
+                            <!-- <option value="ADA-INR">Cardano</option> -->
+                            <option value="DOGE-INR">Dogecoin</option>
+                            <!-- <option value="BNB-INR">Binance Coin</option> -->
+                            <option value="XRP-INR">Ripple</option>
+                        </select>
+                        <input style="margin-top: 0px; margin-left: 30px;" value="Show" name="submit" id="submitButton" class="btn btn-contact-bg" title="Click here" type="submit">
+            </form>								
+</div>
+{% if chart %}
+    <div class="container" style="border: 1px; margin: 5px; position: relative; top: 10px; left: 170px; text-align: center;">
+    <img src="data:image/png;base64, {{ chart|safe }}">
+    
+    </div>
+{% endif %}
+<!-- <div class="container {{ visible }}" style="border: 2px; border-style: solid; margin: 5px;width: 600px; position: relative; top: 10px; left:350px; ">
+    <h2>Accuracy : {{ acc }}%</h2>
+</div> -->
+<div class="container {{ visible }}" style="border: 1px; margin: 5px; position: relative; top: 10px; left: 550px;">
+    <table class="table table-white table-striped" style="width:350px">
+        <thead>
+        <tr>
+            <th>Date</th>
+            
+            <th>Close</th>
+            
+        </tr>
+        </thead>
+        <tbody>
+        <!-- jinja2 Technique -->
+        {% if d %}
+            {% for i in d %}
+                <tr>
+                    <td>{{ i.Date | slice:10 }}</td>
+                    
+                    <td>{{ i.Prediction }}</td>
+                    
+                </tr>
+            {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+</div>
+{% endblock body %}

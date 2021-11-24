@@ -1,0 +1,43 @@
+{% extends 'root.html' %}
+{% block log %}
+<div class="header-info-box">
+	<a href="/logout" class="quote-btn"> logout <i class="icofont icofont-caret-right"></i></a>
+</div>
+{% endblock log %}
+{% block base %}
+<!-- START PAGE BANNER AND BREADCRUMBS -->
+{% load static %}
+<section id="page-banner">
+	<div class="single-page-title-area overlay" data-background="{% static 'assets/img/bg/slide1.jpg' %}">
+		<div class="auto-container">
+			<div class="row">
+				<div class="col-12 text-center">
+					<div class="single-page-title">
+						<h2>{% block title3 %}{% endblock title3 %}</h2>
+						<p></p>
+					</div>
+				</div>
+			</div>
+			<!-- end row-->
+		</div>
+	</div>
+	<div class="single-page-title-area-bottom">
+		<div class="auto-container">
+			<div class="row">
+				<div class="col-12 text-center">
+					<ol class="breadcrumb">
+						<li class="breadcrumb-item"><a href="#">Home</a></li>
+						<li class="breadcrumb-item active">{% block title2 %}{% endblock title2 %}</li>
+					</ol>
+				</div>
+			</div>
+			<!-- end row-->
+		</div>
+	</div>
+</section>
+<!-- END PAGE BANNER AND BREADCRUMBS -->
+
+{% block body %}{% endblock body %}
+
+
+{% endblock base %}

@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% block title1 %}Current{% endblock title1 %}
+{% block title2 %}Current{% endblock title2 %}
+{% block title3 %}Current{% endblock title3 %}
+{% block body %}
+<div class="container {{ visible }}">
+    <table class="table table-white table-striped">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Crypto-Currency</th>
+            <th>Current Value(USD)</th>
+            
+        </tr>
+        </thead>
+        <tbody>
+        <!-- jinja2 Technique -->
+        {% if lst %}
+            {% for i in lst %}
+                <tr>
+                    {% for j in i %}
+                        <td>{{ j }}</td>
+                    {% endfor %}
+                </tr>
+            {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+</div>
+{% endblock body %}

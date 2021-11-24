@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% block title1 %}Collect{% endblock title1 %}
+{% block title2 %}Collect{% endblock title2 %}
+{% block title3 %}Collect{% endblock title3 %}
+
+{% block body %}
+
+<div class="col-lg-7 mx-auto" style="top: 20px;">
+    <div class="contact-form-wrapper">
+        <div class="contact-form">
+            <form id="contact-form" class="form"method="POST">
+                {% csrf_token %}
+                <div class="row">
+                    <div class="form-group col-10 mb-3">
+                        <div class="container">
+                            <div class="row">
+                              <div class="col">
+                                  Crypto : 
+                                <select id="cccc_tsym_sel_converter" name="coin" style="height: 40px;" onchange="changeRate('fsym')" class="styledSelect" style="color: #000; border-color: #DDD; background-color: #FFF">
+                                
+                                    <option value="BTC-INR">Bitcoin</option>
+                                    <option value="ETH-INR">Ethereum </option>
+                                    <!-- <option value="ADA-INR">Cardano</option> -->
+                                    <option value="DOGE-INR">Dogecoin</option>
+                                    <!-- <option value="BNB-INR">Binance Coin</option> -->
+                                    <option value="XRP-INR">Ripple</option>
+                                </select>
+                              </div>
+                              <label>Duration : </label>
+                              <div class="col">
+                                <input name="duration" class="form-control" id="duration" required="required" type="text">
+                              </div>
+                            </div>
+                        
+                        
+                        
+                        
+                    </div>
+                    
+                    </div>
+                    <div class="form-group col-lg-12 mb-0 text-center">
+                        <div class="actions">
+                            <input value="Show" name="submit" id="submitButton" class="btn btn-contact-bg" title="Click here to show your data!" type="submit">
+                        </div>
+                    </div>
+                </div>
+            </form>								
+        </div>
+    </div>
+</div>
+
+{% if chart %}
+    <div class="container" style="border: 1px; margin: 5px; position: relative; top: 10px; left: 100px;">
+    <img src="data:image/png;base64, {{ chart|safe }}" >
+    </div>
+{% endif %}
+<!-- <div class="container my-5">
+    <form class="row g-3" method="post">
+        {% csrf_token %}
+    <div class="col-auto col-md-2" style="margin: 5px; position: relative; left: 500px; top: 1px;">
+        <div class="form-check">
+            
+            <div class="form-group col-lg-12 mb-0 text-center">
+                <div class="actions">
+                    <input value="Interactive window" name="submit" id="submitButton" class="btn btn-contact-bg" title="Click here to submit your message!" type="submit">
+                </div>
+            </div>
+</div>
+</form>
+</div> -->
+
+<div class="container {{ visible }}" style="border: 1px; margin: 5px; position: relative; top: 10px; left: 200px;">
+    <table class="table table-white table-striped">
+        <thead>
+        <tr>
+            <th>Date</th>
+            <th>Open</th>
+            <th>High</th>
+            <th>Low</th>
+            <th>Close</th>
+            <th>Volume</th>
+        </tr>
+        </thead>
+        <tbody>
+        <!-- jinja2 Technique -->
+        {% if d %}
+            {% for i in d %}
+                <tr>
+                    <td>{{ i.Date }}</td>
+                    <td>{{ i.Open }}</td>
+                    <td>{{ i.High }}</td>
+                    <td>{{ i.Low }}</td>
+                    <td>{{ i.Close }}</td>
+                    <td>{{ i.Volume }}</td>
+                </tr>
+            {% endfor %}
+        {% endif %}
+        </tbody>
+    </table>
+</div>
+<br>
+<br>
+{% endblock body %}
