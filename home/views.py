@@ -9,12 +9,13 @@ from home.models import Contactus
 import re
 from requests import Request, Session
 import json
-#import pprint
+import pprint
 from requests.models import Response
 from requests.sessions import session
 from home import data_collect
 import datetime
 def index(request):
+	print("hello world")
     return render(request,'index.html')
 
 def profile(request):
